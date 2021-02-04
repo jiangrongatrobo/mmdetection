@@ -1,0 +1,32 @@
+cd roborock-cvat-client/
+
+python ./cli.py --auth jiangrong: --server-host 192.168.50.120 --server-port 8080 export --format "COCO 1.0" 49  ../baiguang34-train.zip 
+python ./cli.py --auth jiangrong: --server-host 192.168.50.120 --server-port 8080 export --format "COCO 1.0" 50  ../baiguang34-val.zip
+
+python tools/train.py configs/baiguang34/fcos_r50_caffe_fpn_gn-head_1x_coco_baiguang34.py > configs/baiguang34/train.log 2>&1 &
+
+
+root@mmdet:baiguang34# tree -L 2
+.
+|-- cmd.txt
+|-- fcos_r50_caffe_fpn_gn-head_1x_coco-821213aa.pth
+|-- fcos_r50_caffe_fpn_gn-head_1x_coco_baiguang34.py
+|-- roborock-cvat-client
+|   |-- README.md
+|   |-- assets
+|   |-- cli.py
+|   |-- core
+|   |-- lambda.json
+|   |-- requirements.txt
+|   `-- tests
+|-- train
+|   |-- annotations
+|   |-- baiguang34-train.zip
+|   `-- images
+|-- train.log
+`-- val
+    |-- annotations
+    |-- baiguang34-val.zip
+    `-- images
+
+10 directories, 10 files
