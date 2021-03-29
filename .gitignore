@@ -119,3 +119,7 @@ work_dirs/
 *.pth
 *.py~
 *.sh~
+
+configs/baiguang34/roborock-cvat-client
+configs/baiguang34/train
+configs/baiguang34/val
