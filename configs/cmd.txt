@@ -56,3 +56,6 @@ python tools/test.py configs/mask_rcnn/mask_rcnn_r50_fpn_1x_kitchen_2gpu.py \
     --eval bbox segm
 
 
+
+# finetune floor
+CUDA_VISIBLE_DEVICES=0,1 PORT=29500 nohup ./tools/dist_train.sh configs/mask_rcnn/mask_rcnn_r50_fpn_1x_floor_2gpu.py 2 > configs/mask_rcnn/mask_rcnn_r50_fpn_1x_floor_2gpu.log 2>&1 &

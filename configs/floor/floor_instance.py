@@ -1,11 +1,6 @@
 dataset_type = 'CocoDataset'
-classes = ("bowl"
-          ,"plate"
-          ,"mug"
-          ,"spoon"
-          ,"knife"
-          ,"chopstick")
-data_root = '/workspace/mmdetection-20210204/kitchen/'
+classes = ("floor",)
+data_root = '/workspace/mmdetection-20210204/floor/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -38,27 +33,20 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'task#88_60+86+87/annotations/instances_default.json',
-        img_prefix=data_root + 'task#88_60+86+87/images/',
+        ann_file=data_root + 'task#275/annotations/instances_default.json',
+        img_prefix=data_root + 'task#275/images/',
         pipeline=train_pipeline,
         classes=classes),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'task#88_60+86+87/annotations/instances_default.json',
-        img_prefix=data_root + 'task#88_60+86+87/images/',
+        ann_file=data_root + 'task#277/annotations/instances_default.json',
+        img_prefix=data_root + 'task#277/images/',
         pipeline=test_pipeline,
         classes=classes),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'task#88_60+86+87/annotations/instances_default.json',
-        img_prefix=data_root + 'task#88_60+86+87/images/',
+        ann_file=data_root + 'task#277/annotations/instances_default.json',
+        img_prefix=data_root + 'task#277/images/',
         pipeline=test_pipeline,
-        classes=classes)
-    # test=dict(
-    #     type=dataset_type,
-    #     ann_file=data_root + 'lianshu/annotations/instances_default.json',
-    #     img_prefix=data_root + 'lianshu/images/',
-    #     pipeline=test_pipeline,
-    #     classes=classes)
-        )
+        classes=classes))
 evaluation = dict(metric=['bbox', 'segm'])
