@@ -59,3 +59,55 @@ python tools/test.py configs/mask_rcnn/mask_rcnn_r50_fpn_1x_kitchen_2gpu.py \
 
 # finetune floor
 CUDA_VISIBLE_DEVICES=0,1 PORT=29500 nohup ./tools/dist_train.sh configs/mask_rcnn/mask_rcnn_r50_fpn_1x_floor_2gpu.py 2 > configs/mask_rcnn/mask_rcnn_r50_fpn_1x_floor_2gpu.log 2>&1 &
+
+python tools/test.py configs/mask_rcnn/mask_rcnn_r50_fpn_1x_floor_2gpu.py \
+    work_dirs/mask_rcnn_r50_fpn_1x_floor_2gpu/latest.pth \
+    --show-dir vis/ \
+    --eval bbox segm
+
+Evaluating bbox...
+Loading and preparing results...
+DONE (t=0.14s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=4.49s).
+Accumulating evaluation results...
+DONE (t=1.02s).
+Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.871
+Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.967
+Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.929
+Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.000
+Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.029
+Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.886
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.906
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.906
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.906
+Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.000
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.034
+Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.923
+
+Evaluating segm...
+Loading and preparing results...
+DONE (t=0.09s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *segm*
+DONE (t=5.70s).
+Accumulating evaluation results...
+DONE (t=0.88s).
+Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.825
+Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.955
+Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.901
+Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.000
+Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.056
+Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.841
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.869
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.869
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.869
+Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.000
+Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.061
+Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.886
+OrderedDict([('bbox_mAP', 0.871), ('bbox_mAP_50', 0.967), ('bbox_mAP_75', 0.929), ('bbox_mAP_s', 0.0), ('bbox_mAP_m', 0.029), ('bbox_mAP_l', 0.886), ('bbox_mAP_copypaste', '0.871 0.967 0.929 0.000 0.029 0.886'), ('segm_mAP', 0.825), ('segm_mAP_50', 0.955), ('segm_mAP_75', 0.901), ('segm_mAP_s', 0.0), ('segm_mAP_m', 0.056), ('segm_mAP_l', 0.841), ('segm_mAP_copypaste', '0.825 0.955 0.901 0.000 0.056 0.841')])
